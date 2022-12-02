@@ -1,9 +1,12 @@
-import React from 'react'
+import React from "react";
+import Header from "../components/common/Header";
 
 const OrderApprove = () => {
-  return (
-    <div>OrderApprove</div>
-  )
-}
+	return (
+		<>
+			<Header>Aprobacion de orden #</Header>
+		</>
+	);
+};
 
-export default OrderApprove
+export default OrderApprove;

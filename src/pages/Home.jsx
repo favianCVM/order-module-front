@@ -1,6 +1,7 @@
 import React from "react";
-import { Box, Heading, UnorderedList, Text, ListItem } from "@chakra-ui/react";
+import { Box, UnorderedList, Text, ListItem } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
+import Header from "../components/common/Header";
 
 const PageLink = ({ children, to }) => (
 	<ListItem>
@@ -13,17 +14,7 @@ const PageLink = ({ children, to }) => (
 const Home = () => {
 	return (
 		<>
-			<Heading
-				w="fit-content"
-				padding="4"
-				mx="auto"
-				my="10"
-				rounded="md"
-				textAlign="center"
-				bg="gray.200"
-			>
-				Modulo de ordenes
-			</Heading>
+			<Header>Modulo de ordenes</Header>
 
 			<Box w="full" display="flex" justifyContent="center">
 				<UnorderedList>
