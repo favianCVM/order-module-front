@@ -15,6 +15,7 @@ const SelectField = ({
 	placeholder,
 	isInvalid,
 	multiple,
+	value = "",
 }) => {
 	return (
 		<FormControl>
@@ -26,9 +27,13 @@ const SelectField = ({
 				onChange={onChange}
 				placeholder={placeholder}
 				multiple={multiple}
+				value={value}
+				bg="white"
 			>
-				{options.map(({ value, label }) => (
-					<option value={value}>{label}</option>
+				{options.map(({ value, label }, index) => (
+					<option key={`${label}-${name}-${index}`} value={value}>
+						{label}
+					</option>
 				))}
 			</Select>
 

@@ -15,6 +15,7 @@ const TextField = ({
 	onChange,
 	type = "text",
 	isInvalid,
+	max,
 }) => {
 	return (
 		<FormControl>
@@ -30,6 +31,5 @@ const TextField = ({
 		</FormControl>
 	);
 };
-
 
 export default TextField;
