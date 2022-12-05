@@ -6,6 +6,7 @@ import axios from "axios";
 
 const ViewOrders = () => {
 	const [orders, setOrders] = React.useState([]);
+
 	React.useEffect(() => {
 		axios
 			.get("http://localhost:8000/get-orders/")
@@ -17,6 +18,7 @@ const ViewOrders = () => {
 				console.log(error);
 			});
 	}, []);
+
 	return (
 		<Box w="full" height="full">
 			<Header>Lista de ordenes de compra</Header>

@@ -158,6 +158,7 @@ const RegisterOrderForm = ({
 										{form.products[index].id && (
 											<NumberInput
 												label="cantidad"
+												min={0}
 												max={
 													products.length > 0
 														? products.find(

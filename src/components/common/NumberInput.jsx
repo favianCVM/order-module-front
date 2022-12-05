@@ -10,7 +10,7 @@ import {
 	FormHelperText,
 } from "@chakra-ui/react";
 
-const NumberInput = ({ max, onChange, name, helpertext, label }) => {
+const NumberInput = ({ max, min = 0, onChange, name, helpertext, label }) => {
 	return (
 		<FormControl>
 			<FormLabel>{label}</FormLabel>
@@ -19,8 +19,8 @@ const NumberInput = ({ max, onChange, name, helpertext, label }) => {
 				onChange={onChange}
 				defaultValue={0}
 				max={max}
-				>
-				
+				min={min}
+			>
 				<NumberInputField bg="white" />
 				<NumberInputStepper>
 					<NumberIncrementStepper />

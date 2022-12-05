@@ -1,6 +1,7 @@
 import React from "react";
 import { Button, Text, Flex, Badge } from "@chakra-ui/react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+
 const OrderCard = ({
 	id,
 	status,
@@ -8,6 +9,8 @@ const OrderCard = ({
 	provider = { name: "" },
 	isAdmin = false,
 }) => {
+	const navigate = useNavigate();
+
 	return (
 		<Flex
 			rounded="lg"
@@ -28,10 +31,16 @@ const OrderCard = ({
 				{user.first_name} {user.last_name}
 			</Text>
 			<Badge>{status}</Badge>
-			<Button>
-				<Link to={`/order-details/${id}`}>detalles</Link>
+			<Button
+				onClick={() =>
+					navigate({
+						pathname: `/order-details/${id}`,
+					})
+				}
+			>
+				detalles
 			</Button>
-			{isAdmin && <Button>Aprovar</Button>}
+			{isAdmin && <Button onClick={() => alert('aprovar')}>Aprovar</Button>}
 		</Flex>
 	);
 };
