@@ -9,6 +9,11 @@ const OrderDetails = () => {
 	const [orderProducts, setOrderProducts] = React.useState([]);
 
 	const params = useParams();
+	const colorSchemes = {
+		CANCELED: "red",
+		OPEN: "blue",
+		APPROVED: "green",
+	};
 
 	React.useEffect(() => {
 		axios
@@ -31,7 +36,7 @@ const OrderDetails = () => {
 			<Flex justifyContent="space-around" w="75%" mx="auto">
 				<Card>
 					estatus:
-					<Badge colorScheme="orange" fontSize="lg">
+					<Badge colorScheme={colorSchemes[order?.status]} fontSize="lg">
 						{order?.status}
 					</Badge>
 				</Card>
@@ -53,16 +58,22 @@ const OrderDetails = () => {
 			</Heading>
 			<Flex w="75%" mx="auto" flexDir="column">
 				{orderProducts?.map(({ quantity, product }) => (
-					<Card my="4" mx="auto" w="fit-content" flexDir="row" justifyContent="space-around">
-						<Card display="inline" w="fit-content">
+					<Card
+						my="4"
+						mx="auto"
+						w="fit-content"
+						flexDir="row"
+						justifyContent="space-around"
+					>
+						<Card textAlign="center" mx="4" display="inline" w="fit-content">
 							<Text>nombre</Text>
 							<Badge>{product?.name}</Badge>
 						</Card>
-						<Card display="inline" w="fit-content">
+						<Card textAlign="center" mx="4" display="inline" w="fit-content">
 							<Text>categoria</Text>
 							<Badge>{product?.product_category?.name}</Badge>
 						</Card>
-						<Card display="inline" w="fit-content">
+						<Card textAlign="center" mx="4" display="inline" w="fit-content">
 							<Text>cantidad</Text>
 							<Badge>{quantity}</Badge>
 						</Card>
