@@ -2,6 +2,7 @@ import React from "react";
 import { Home, OrderApprove, OrderCreation, ViewOrders } from "../pages/index";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import OrderDetails from "../pages/OrderDetails";
 
 const router = createBrowserRouter([
 	{
@@ -19,6 +20,10 @@ const router = createBrowserRouter([
 	{
 		path: "/view-orders",
 		element: <ViewOrders />,
+	},
+	{
+		path: "/order-details/:id",
+		element: <OrderDetails />,
 	},
 ]);
 

@@ -2,8 +2,13 @@ import React from "react";
 import OrderCreationForm from "../components/RegisterOrder/RegisterOrderForm";
 import Header from "../components/common/Header";
 import axios from "axios";
+import { useToast } from "@chakra-ui/react";
+import { useNavigate } from "react-router-dom";
 
 const OrderCreation = () => {
+	const toast = useToast();
+	const navigate = useNavigate();
+
 	const [products, setProducts] = React.useState([]);
 	const [providers, setProviders] = React.useState([]);
 	const [users, setUsers] = React.useState([]);
@@ -27,15 +32,40 @@ const OrderCreation = () => {
 			.catch((error) => {
 				console.log(error);
 			});
-
-		// TODO: manejar el form de los productos como => "NOMBRE DE PRODUCTO - PROVEEDOR"
-		// con un boton que agrege en una matriz los objetos
 	}, []);
+
+	const handleSubmit = (e, form) => {
+		e.preventDefault();
+		axios
+			.post("http://localhost:8000/create-order", form)
+			.then((response) => {
+				console.log("response :", response);
+				toast({
+					title: "Orden creada exitosamente.",
+					description: "Sera redirido al homepage.",
+					status: "success",
+					duration: 2000,
+					isClosable: true,
+				});
+
+				setProducts([]);
+				setProviders([]);
+				setUsers([]);
+
+				setTimeout(() => {
+					navigate("/");
+				}, 2000);
+			})
+			.then((error) => {
+				console.log(error);
+			});
+	};
 
 	return (
 		<>
 			<Header>Crear orden de compra</Header>
 			<OrderCreationForm
+				handleSubmit={handleSubmit}
 				products={products}
 				providers={providers}
 				users={users}
